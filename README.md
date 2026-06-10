@@ -1,2 +1,42 @@
-# homelab-infrastructure
-Hands-on IT home lab — virtualized and physical infrastructure for practicing sysadmin, networking, and security skills toward a career in IT.
+# Home Lab
+
+A self-built IT home lab designed to develop real-world skills in systems
+administration, networking, and security. Built and maintained alongside
+CompTIA A+ certification as a foundation for a career in IT.
+
+---
+
+## Infrastructure
+
+- Hypervisor (type 2): VMware running Windows 10, Windows Server, and Ubuntu VMs
+- Physical hardware: Repurposed desktop used as a dedicated server
+- Network: Managed switch with VLAN segmentation
+- Storage: NAS for centralized file storage and backups
+- Single-board compute: Raspberry Pi running Pi-hole for local DNS
+
+---
+
+## What I'm practicing
+
+Systems administration — installing and configuring Windows and Linux,
+managing users and permissions, maintaining services, and automating
+tasks with scripts and scheduled jobs.
+
+Networking — setting up and managing VLANs, DHCP, and local DNS.
+Monitoring traffic with Wireshark and practicing subnetting and
+basic routing concepts.
+
+Security — segmenting the network to isolate untrusted devices,
+reviewing system logs, configuring alerts, and exploring intrusion
+detection with tools like Snort and Suricata.
+
+Help desk simulation (osTicket and SymTrain) — documenting issues and resolutions in a
+personal runbook and practicing ticket triage and escalation workflows.
+
+---
+
+## Goal
+
+This lab is a continuous learning environment. Every configuration,
+fix, and experiment is documented here to show hands-on experience
+beyond certifications. Currently working toward a helpdesk role and acquiring CompTIA Network+.
