@@ -39,7 +39,6 @@ pihole is configured with a static IP for consistent DNS resolutions and provide
 9. [access the pihole admin dashboard at: (private static IP/admin) and login given the default password]
 10. [ensure functionality, add additional domain lists as needed, and ensure security by changing default passwords]
 
-
 ---
 
 ## Issues Encountered
