@@ -1,0 +1,60 @@
+# [uptime Kuma installation on home network]
+
+Date: [06/2026]
+Status: [in-progress]
+
+---
+
+## Overview
+
+uptime Kuma is an open source and self-hosted monitoring tool that is responsible for uptime tracking of services, network devices, and websites. 
+supporting multiple monitor types (HTTP/HTTPS, TCP, DNS, ping, etc.), uptime KUMA is a logical and effective application for any home network.
+
+---
+
+## Environment
+
+- Device: [Pi-hole.local]
+- OS: [Raspberry Pi OS Lite (64-bit) (Legacy)]
+- IP Address: [private]
+
+---
+
+## Steps
+
+1. [connect to raspberry pi through SSH by opening the command prompt on workstation and entering the command: ssh pi@Pi-hole.local]  
+2. [ensure the raspberry pi is up-to-date by entering the command: [sudo apt update && sudo apt upgrade -y]
+3. [to mount uptime Kuma, node.js must be installed on device. enter the command: curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs]
+4. [installed uptime Kuma by entering the command: sudo npm install -g uptime-kuma]
+5. [start uptime Kuma by entering the command: uptime-kuma | set the ]
+
+---
+
+## Issues Encountered
+
+- full WAN outage approximately 3-4 hours after Pi-hole installation
+  - date: 06/10/2026
+  - symptoms: internet down network-wide, ping 8.8.8.8 timed out from 
+    both workstation and Pi via SSH, WAN/DNS red in eero app, ONT lights normal
+  - steps taken:
+     1. ran dmesg | grep eth0 — ethernet interface stable, no drops logged
+     2. pinged 8.8.8.8 from workstation — timed out
+     3. pinged 8.8.8.8 from Pi via SSH — timed out
+     4. checked ONT — lights normal, ruled out fiber issue
+     5. checked eero app — WAN connection showing red (specifically at the DNS level)
+ - root cause: ISP-level outage, unrelated to Pi-hole installation
+ - fix: self-resolved, ISP restored connection automatically
+ - time to resolve: ~10 minutes
+
+---
+
+## Result
+
+properly functioning network-wide advertisement and tracker blocker installed and maintained
+
+---
+
+## Notes
+
+tailscale can be configured at a later date to extend Pi-hole advertisement blocking outside the home network
