@@ -1,4 +1,4 @@
-# [pihole installation on home network]
+# [Pi-hole installation on home network]
 
 Date: [06/2026]
 Status: [completed]
@@ -7,14 +7,14 @@ Status: [completed]
 
 ## Overview
 
-pihole is an open source, self-hosted DNS sinkhole that can be installed on a raspberry pi device. pihole blocks advertisements and trackers network-wide through DNS query management. 
-pihole is configured with a static IP for consistent DNS resolutions and provides an administrator dashboard for real time monitoring, block statistics, and other pertinent settings.
+Pi-hole is an open source, self-hosted DNS sinkhole that can be installed on a raspberry pi device. Pi-hole blocks advertisements and trackers network-wide through DNS query management. 
+Pi-hole is configured with a static IP for consistent DNS resolutions and provides an administrator dashboard for real time monitoring, block statistics, and other pertinent settings.
 
 ---
 
 ## Environment
 
-- Device: [pihole.local]
+- Device: [Pi-hole.local]
 - OS: [Raspberry Pi OS Lite (64-bit) (Legacy)]
 - IP Address: [private]
 
@@ -28,22 +28,34 @@ pihole is configured with a static IP for consistent DNS resolutions and provide
 4. [configure hostname, username and secure password, network credentials, LAN country, time zone, and enable SSH]
 5. [write the OS to microSD card]
 6. [eject microSD card from workstation, insert into the raspberry pi, and power the device on]
-7. [open the command prompt on workstation and enter: ssh pi@pihole.local | connect to raspberry pi and follow the automated setup prompts]  
+7. [open the command prompt on workstation and enter: ssh pi@Pi-hole.local | connect to raspberry pi and follow the automated setup prompts]  
     - accept the network-wide advertisement blocker setup
     - set static IP via your router admin panel or network application
     - select upstream DNS provider (cloudflare chosen)
     - accept the default block list
     - enable query logging
     - continue through remaining prompts
-8. [navigate to router admin panel or network application and set the DNS server to the pihole static ip]
-9. [access the pihole admin dashboard at: (private static IP/admin) and login given the default password]
+8. [navigate to router admin panel or network application and set the DNS server to the Pi-hole static ip]
+9. [access the Pi-hole admin dashboard at: (private static IP/admin) and login given the default password]
 10. [ensure functionality, add additional domain lists as needed, and ensure security by changing default passwords]
 
 ---
 
 ## Issues Encountered
 
-none.
+- full WAN outage approximately 3-4 hours after Pi-hole installation
+  - date: 06/10/2026
+  - symptoms: internet down network-wide, ping 8.8.8.8 timed out from 
+    both workstation and Pi via SSH, WAN/DNS red in eero app, ONT lights normal
+  - steps taken:
+     1. ran dmesg | grep eth0 — ethernet interface stable, no drops logged
+     2. pinged 8.8.8.8 from workstation — timed out
+     3. pinged 8.8.8.8 from Pi via SSH — timed out
+     4. checked ONT — lights normal, ruled out fiber issue
+     5. checked eero app — WAN connection showing red (specifically at the DNS level)
+ - root cause: ISP-level outage, unrelated to Pi-hole installation
+ - fix: self-resolved, ISP restored connection automatically
+ - time to resolve: ~10 minutes
 
 ---
 
