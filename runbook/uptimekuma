@@ -27,34 +27,27 @@ supporting multiple monitor types (HTTP/HTTPS, TCP, DNS, ping, etc.), uptime KUM
 3. [to mount uptime Kuma, node.js must be installed on device. enter the command: curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs]
 4. [installed uptime Kuma by entering the command: sudo npm install -g uptime-kuma]
-5. [start uptime Kuma by entering the command: uptime-kuma | set the ]
+5. [start uptime Kuma by entering the command: uptime-kuma | set uptime Kuma to auto start on reboot by entering the commmands: 
+   sudo npm install -g pm2
+   pm2 start uptime-kuma
+   pm2 startup
+   pm2 save ]
+6. enter admin panel by entering http://)(private ip):3001 and make necessary changes to settings.
 
 ---
 
 ## Issues Encountered
 
-- full WAN outage approximately 3-4 hours after Pi-hole installation
-  - date: 06/10/2026
-  - symptoms: internet down network-wide, ping 8.8.8.8 timed out from 
-    both workstation and Pi via SSH, WAN/DNS red in eero app, ONT lights normal
-  - steps taken:
-     1. ran dmesg | grep eth0 — ethernet interface stable, no drops logged
-     2. pinged 8.8.8.8 from workstation — timed out
-     3. pinged 8.8.8.8 from Pi via SSH — timed out
-     4. checked ONT — lights normal, ruled out fiber issue
-     5. checked eero app — WAN connection showing red (specifically at the DNS level)
- - root cause: ISP-level outage, unrelated to Pi-hole installation
- - fix: self-resolved, ISP restored connection automatically
- - time to resolve: ~10 minutes
+n/a
 
 ---
 
 ## Result
 
-properly functioning network-wide advertisement and tracker blocker installed and maintained
+properly functioning and maintained network-wide monitoring system
 
 ---
 
 ## Notes
 
-tailscale can be configured at a later date to extend Pi-hole advertisement blocking outside the home network
+n/a
