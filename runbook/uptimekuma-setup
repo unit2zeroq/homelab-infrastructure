@@ -24,15 +24,14 @@ supporting multiple monitor types (HTTP/HTTPS, TCP, DNS, ping, etc.), uptime KUM
 
 1. [connect to raspberry pi through SSH by opening the command prompt on workstation and entering the command: ssh pi@pihole.local]  
 2. [ensure the raspberry pi is up-to-date by entering the command: [sudo apt update && sudo apt upgrade -y]
-3. [to mount uptime Kuma, node.js must be installed on device. enter the command: curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs]
+3. [to mount uptime Kuma, node.js must be installed on device. enter the command: sudo apt install -y nodejs]
 4. [installed uptime Kuma by entering the command: sudo npm install -g uptime-kuma]
-5. [start uptime Kuma by entering the command: uptime-kuma | set uptime Kuma to auto start on reboot by entering the commmands: 
+5. [start uptime Kuma by entering the command: uptime-kuma --run | set uptime Kuma to auto start on reboot by entering the commmands: 
    sudo npm install -g pm2
    pm2 start uptime-kuma
    pm2 startup
    pm2 save ]
-6. enter admin panel by entering http://)(private ip):3001 and make necessary changes to settings.
+6. enter admin panel by entering http://(private ip):3001 and make necessary changes to settings.
 
 ---
 
