@@ -21,11 +21,11 @@
 - Storage: [32GB microSD (Micro Center Class 10)]
 - OS: [Raspberry Pi OS Lite (64-bit) (Legacy)]
 - IP Address: [private]
-- Role: [DNS sinkhole / network-wide ad blocking]
+- Role: [DNS sinkhole / network-wide ad blocking, network monitoring]
 - Connected to: [TP-Link TL-SG208E — Port 7]
 - Case: [Argon POLY+ 5]
 - Date added: [06/2026]
-- Notes: [Pi-hole installed and connected with SSH, static IP configured, network-wide DNS set via "Eero" WAP application]
+- Notes: [Pi-hole installed and connected with SSH, static IP configured, network-wide DNS set via "Eero" WAP application. Uptime-kuma installed.]
 
 ## Device: [TP-Link TL-SG208E]
 
