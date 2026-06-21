@@ -22,7 +22,7 @@ supporting multiple monitor types (HTTP/HTTPS, TCP, DNS, ping, etc.), uptime KUM
 
 ## Steps
 
-1. [connect to raspberry pi through SSH by opening the command prompt on workstation and entering the command: ssh pi@pihole.local]  
+1. [connect to raspberry pi through SSH by opening the command prompt on workstation and entering the command: ssh pi@pione.local]  
 2. [ensure the raspberry pi is up-to-date by entering the command: [sudo apt update && sudo apt upgrade -y]
 3. [to mount uptime Kuma, docker and docker compose must be installed. enter the command: sudo apt install docker.io -y (and) sudo apt install docker-compose -y]
 4. [create a directory to store and run uptime-kuma. enter the command: mkdir uptimekuma | cd uptimekuma (once you are in uptime kuma dir (~/uptimekuma$) enter: nano docker-compose.yml]
