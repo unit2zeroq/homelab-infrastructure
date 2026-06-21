@@ -24,13 +24,10 @@ supporting multiple monitor types (HTTP/HTTPS, TCP, DNS, ping, etc.), uptime KUM
 
 1. [connect to raspberry pi through SSH by opening the command prompt on workstation and entering the command: ssh pi@pihole.local]  
 2. [ensure the raspberry pi is up-to-date by entering the command: [sudo apt update && sudo apt upgrade -y]
-3. [to mount uptime Kuma, node.js must be installed on device. enter the command: sudo apt install -y nodejs]
-4. [installed uptime Kuma by entering the command: sudo npm install -g uptime-kuma]
-5. [start uptime Kuma by entering the command: uptime-kuma --run | set uptime Kuma to auto start on reboot by entering the commmands: 
-   sudo npm install -g pm2
-   pm2 start uptime-kuma
-   pm2 startup
-   pm2 save ]
+3. [to mount uptime Kuma, docker and docker compose must be installed. enter the command: sudo apt install docker.io -y (and) sudo apt install docker-compose -y]
+4. [create a directory to store and run uptime-kuma. enter the command: mkdir uptimekuma | cd uptimekuma (once you are in uptime kuma dir (~/uptimekuma$) enter: nano docker-compose.yml]
+5. [once GNU nano prompt appears, paste docker.yaml text from uptime-kuma repo (https://github.com/louislam/uptime-kuma/blob/master/compose.yaml)]
+6. [while still in the uptimekuma dir, enter the command: sudo docker-compose up -d | verify proper install by entering the command: sudo docker ps]
 6. enter admin panel by entering http://(private ip):3001 and make necessary changes to settings.
 
 ---
