@@ -28,7 +28,7 @@ Pi-hole is configured with a static IP for consistent DNS resolutions and provid
 4. [configure hostname, username and secure password, network credentials, LAN country, time zone, and enable SSH]
 5. [write the OS to microSD card]
 6. [eject microSD card from workstation, insert into the raspberry pi, and power the device on]
-7. [open the command prompt on workstation and enter: ssh pi@Pi-hole.local | connect to raspberry pi and follow the automated setup prompts]  
+7. [open the command prompt on workstation and enter: ssh pi@pihole.local | connect to raspberry pi and follow the automated setup prompts]  
     - accept the network-wide advertisement blocker setup
     - set static IP via your router admin panel or network application
     - select upstream DNS provider (cloudflare chosen)
