@@ -1,0 +1,55 @@
+# [osTicket installation on Ubuntu Server VM]
+
+Date: [06/2026]
+Status: [completed]
+
+---
+
+## Overview
+osTicket is an open source, self-hosted support ticketing system used to manage, organize, and archive support requests. 
+osTicket provides a web-based interface for creating, tracking, and resolving tickets, simulating a real-world help desk environment for training and documentation purposes.
+
+---
+
+## Environment
+- Device: [zeroq-VM (Workstation1)]
+- OS: [Ubuntu Server 22.04 LTS (64-bit)]
+- IP Address: [private]
+
+---
+
+## Steps
+1. [open VMware on workstation and power on Ubuntu Server VM (ensure network adapter is set to bridged for network-wide availability)]
+2. [verify VM IP address by entering: ip a | take note of VM IP address to access osTicket through workstation1]
+3. [ensure the VM is up-to-date by entering: sudo apt update && sudo apt upgrade -y]
+4. [install Apache web server by entering: sudo apt install apache2 -y]
+5. [install MySQL database server by entering: sudo apt install mysql-server -y]
+6. [install PHP and required extensions by entering: sudo apt install php php-mysqli php-gd php-xml php-mbstring php-intl php-apcu php-imap php-json php-curl -y]
+7. [download osTicket v1.18.4 by entering: cd /tmp && wget https://github.com/osTicket/osTicket/releases/download/v1.18.4/osTicket-v1.18.4.zip]
+8. [unzip and extract osTicket to Apache web directory by entering: sudo unzip /tmp/osTicket-v1.18.4.zip -d /var/www/html/osticket]
+9. [set correct permissions and configure the osTicket config file by entering:]
+    - sudo chown -R www-data:www-data /var/www/html/osticket
+    - sudo cp /var/www/html/osticket/upload/include/ost-sampleconfig.php /var/www/html/osticket/upload/include/ost-config.php
+    - sudo chmod 0666 /var/www/html/osticket/upload/include/ost-config.php
+10. [set up MySQL database by entering: sudo mysql, then run the following commands:]
+    - CREATE DATABASE osticket;
+    - CREATE USER 'osticket'@'localhost' IDENTIFIED BY 'password';
+    - GRANT ALL PRIVILEGES ON osticket.* TO 'osticket'@'localhost';
+    - FLUSH PRIVILEGES;
+    - EXIT;
+11. [access the osTicket installer in browser at: (private IP/osticket/upload) and complete setup]
+12. [configure helpdesk name, admin credentials, and database settings through the web installer]
+
+---
+
+## Issues Encountered
+none.
+
+---
+
+## Result
+properly functioning self-hosted help desk ticketing system installed and accessible via browser on the local network
+---
+
+## Notes
+osTicket is used to simulate real-world help desk ticket workflows including ticket creation, triage, assignment, and resolution documentation
