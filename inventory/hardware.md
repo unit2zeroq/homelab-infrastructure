@@ -7,7 +7,7 @@
 - Storage: [Boot Drive: Samsung SSD 860 EVO 500GB] [Storage Drive (D:): Samsung SSD 980 1TB]
 - OS: [Windows 10 Pro]
 - IP Address: [private]
-- Role: [Primary Workstation and Type 2 Hypervisor hosting Windows 11 Enterprise, Ubuntu, and MacOS Tahoe 26.5.1]
+- Role: [Primary Workstation and Type 2 Hypervisor hosting Ubuntu and MacOS Tahoe 26.5.1]
 - Connected to: [TP-Link TL-SG208E — Port 3]
 - Date added: [01/2020]
 - Notes: [N/A]
