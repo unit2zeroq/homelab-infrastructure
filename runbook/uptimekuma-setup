@@ -28,7 +28,7 @@ supporting multiple monitor types (HTTP/HTTPS, TCP, DNS, ping, etc.), uptime KUM
 4. [create a directory to store and run uptime-kuma. enter the command: mkdir uptimekuma | cd uptimekuma (once you are in uptime kuma dir (~/uptimekuma$) enter: nano docker-compose.yml]
 5. [once GNU nano prompt appears, paste docker.yaml text from uptime-kuma repo (https://github.com/louislam/uptime-kuma/blob/master/compose.yaml)]
 6. [while still in the uptimekuma dir, enter the command: sudo docker-compose up -d | verify proper install by entering the command: sudo docker ps]
-6. enter admin panel by entering http://(private ip):3001 and make necessary changes to settings.
+6. [enter admin panel by entering http://(private ip):3001 and make necessary changes to settings]
 
 ---
 
