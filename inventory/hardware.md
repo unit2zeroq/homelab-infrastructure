@@ -10,7 +10,7 @@
 - Role: [Primary Workstation and Type 2 Hypervisor hosting Ubuntu and Windows Server 2025 Datacenter Edition]
 - Connected to: [Bedroom WAP: Port 2]
 - Date added: [01/2020]
-- Notes: [N/A]
+- Notes: [Ubuntu VM hosting osTicket software. Windows Server 2025 Datacenter Edition hosting Active Directory sandbox.]
 
 ## Device: [raspberrypi]
 
