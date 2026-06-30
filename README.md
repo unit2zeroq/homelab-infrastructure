@@ -9,10 +9,9 @@ CompTIA A+ certification as a foundation for a career in IT.
 ## Infrastructure
 
 - Hypervisor (type 2): VMware running Windows 10, Windows Server, and Ubuntu VMs
-- Physical hardware: Repurposed desktop used as a dedicated server
-- Network: Managed switch with VLAN segmentation
+- Network: Managed switch with VLAN segmentation (to be completed)
 - Storage: NAS for centralized file storage and backups
-- Single-board compute: Raspberry Pi running Pi-hole for local DNS
+- Single-board compute: Raspberry Pi running Pi-hole for local DNS and uptime-kuma for network and service monitoring
 
 ---
 
@@ -26,11 +25,10 @@ Networking — setting up and managing VLANs, DHCP, and local DNS.
 Monitoring traffic with Wireshark and practicing subnetting and
 basic routing concepts.
 
-Security — segmenting the network to isolate untrusted devices,
-reviewing system logs, configuring alerts, and exploring intrusion
+Security — reviewing system logs, configuring alerts, and exploring intrusion
 detection with tools like Snort and Suricata.
 
-Help desk simulation (osTicket and SymTrain) — documenting issues and resolutions in a
+Help desk simulation (osTicket) — documenting issues and resolutions in a
 personal runbook and practicing ticket triage and escalation workflows.
 
 ---
