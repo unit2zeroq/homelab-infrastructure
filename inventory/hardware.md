@@ -3,7 +3,7 @@
 - Type: Desktop PC
 - Make / Model: [Custom Built]
 - CPU: [AMD Ryzen 5 5600x]
-- RAM: [G.Skill F4-3600C18-8GTZR x2]
+- RAM: [8GB DDR4 G.Skill F4-3600C18-8GTZR x2]
 - Storage: [Boot Drive: Samsung SSD 860 EVO 500GB] [Storage Drive (D:): Samsung SSD 980 1TB]
 - OS: [Windows 10 Pro]
 - IP Address: [private]
@@ -11,8 +11,22 @@
 - Connected to: [Bedroom WAP: Port 2]
 - Date added: [01/2020]
 - Notes: [Ubuntu VM hosting osTicket software. Windows Server 2025 Datacenter Edition hosting Active Directory sandbox.]
+  
+## Device: [Server and NAS]
 
-## Device: [raspberrypi]
+- Type: Desktop PC
+- Make / Model: [Dell Optiplex 3060]
+- CPU: [Intel Core i5 8500T]
+- RAM: [16GB DDR4 2400MHZ x2]
+- Storage: [Boot Drive: SK Hynix SC401 SATA SSD 256GB]
+- OS: [Windows 11 Pro]
+- IP Address: [private]
+- Role: [Dedicated Homelab server and NAS]
+- Connected to: [TP-Link TL-SG208E — Port 7]
+- Date added: [06/2026]
+- Notes: []
+
+## Device: [Raspberry Pi]
 
 - Type: Single-Board Computer
 - Make / Model: [Raspberry Pi 5 1GB]
