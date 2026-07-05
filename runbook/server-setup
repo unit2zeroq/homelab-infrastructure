@@ -1,1 +1,61 @@
+# [NAS Storage Solution - Ubuntu Server with Software RAID1]
 
+Date: [07/2026]
+Status: [completed]
+
+---
+
+## Overview
+
+This project involved building a network-attached storage (NAS) solution using a Dell OptiPlex 3060 running Ubuntu Server. The system utilizes two 4TB NAS-grade HDDs configured in a software RAID1 array (via mdadm) for data redundancy, 
+with Samba providing network file sharing access, SSH for remote administration, and Docker installed to support containerized services.
+
+## Environment
+
+Device: [Dell OptiPlex 3060]
+OS: [Ubuntu Server 26.04 LTS (64-bit)]
+Storage: [2x WD Red Plus 4TB HDDs in external dual-bay enclosure (independent/JBOD mode)]
+IP Address: [private]
+
+
+Steps
+
+1. [create bootable Ubuntu Server installer USB using Rufus]
+2. [boot Dell OptiPlex 3060 from installer USB via F2 boot menu]
+3. [proceed through Ubuntu Server installation, selecting standard install (not minimized), no third-party drivers]
+4. [configure network interface via DHCP during install, confirm connectivity]
+5. [select internal NVME SSD as installation target, configure storage layout without LVM or encryption]
+6. [enable OpenSSH server during installation for remote CLI access]
+7. [complete installation and reboot, confirm remote SSH access by entering: 'ssh username@private ip' through workstation CLI]
+8. [update and upgrade the system by entering: sudo apt update && sudo apt upgrade -y]
+9. [confirm both external HDDs are detected as separate block devices by entering: lsblk]
+10. [install mdadm by entering: sudo apt install mdadm -y]
+11. [create the RAID1 array across both drives by entering: sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc]
+12. [enable a write-intent bitmap to optimize resync recovery time by entering: sudo mdadm --grow --bitmap=internal /dev/md0]
+13. [format the array with ext4 by entering: sudo mkfs.ext4 /dev/md0]
+14. [create a mount point and mount the array by entering:]
+      sudo mkdir -p /mnt/nas
+      sudo mount /dev/md0 /mnt/nas
+15. [retrieve the filesystem UUID by entering: sudo blkid /dev/md0]
+16. [add the array to /etc/fstab for persistent mounting across reboots, referencing the UUID]
+17. [verify persistent mount by entering: sudo mount -a && df -h]
+18. [install Samba by entering: sudo apt install samba -y]
+19. [set a Samba password for the user account by entering: sudo smbpasswd -a username]
+20. [configure a network share in /etc/samba/smb.conf, defining path, valid users, and read/write permissions]
+21. [restart the Samba service to apply changes by entering: sudo systemctl restart smbd]
+22. [confirm Samba share is accessible from a Windows workstation by connecting to \private ip\sharename via File Explorer]
+23. [install Docker by entering: sudo apt install docker.io docker-compose-v2 -y]
+24. [add user to the docker group to allow running Docker commands without sudo by entering: sudo usermod -aG docker $USER]
+25. [reboot to apply group changes and confirm Docker is functional by entering: docker ps]
+
+
+## Issues Encountered
+-initial USB enumeration failure with the external drive enclosure produced repeated "device descriptor read" errors during detection; resolved by power-cycling the enclosure directly. 
+-Indentation/formatting issues occurred when creating configuration files via terminal paste due to tab/space conversion; resolved by using nano directly for file editing instead of piped heredoc commands.
+
+## Result
+fully functional NAS solution with redundant software RAID1 storage, accessible over the network via Samba file sharing, with SSH enabled for remote management and Docker installed to support future containerized service deployment.
+
+## Notes
+this build intentionally used native Linux tools (mdadm, Samba) configured directly via CLI rather than a pre-built NAS OS solution such as OpenMediaVault, in order to gain deeper hands-on experience 
+with underlying storage and networking configuration relevant to sysadmin/help desk work.
