@@ -1,0 +1,48 @@
+# [Active Directory Domain Services - Windows Server 2025]
+
+Date: [07/2026]
+Status: [working/in-progress]
+
+---
+
+## Overview
+
+This project involved deploying Active Directory Domain Services (AD DS) on a Windows Server 2025 virtual machine to provide centralized authentication and policy enforcement. The system is configured as a new forest root domain controller with integrated DNS and Global Catalog services, alongside a separate Windows 11 Pro client VM joined to the domain to validate account management and group policy application workflows.
+
+## Environment
+
+Device: [Windows Server VM (DC01) + Windows 11 Pro VM]
+OS: [Windows Server 2025 / Windows 11 Pro]
+Domain: [homelab.local]
+IP Address: [private]
+
+Steps
+
+1. [assign a static IP to the Windows Server via DHCP reservation to centralize IP management]
+2. [rename server to DC01 via Server Manager and restart]
+3. [open command prompt as administrator and set a complex password for the local administrator account to meet promotion requirements by entering: net user Administrator <password>]
+4. [install the AD DS role via Server Manager: Add Roles and Features > Server Roles > Active Directory Domain Services]
+5. [ensure Active Directory Certificate Services is unchecked, but accept the prompt to add required AD DS dependencies including Group Policy Management and RSAT tools]
+6. [click the warning flag in Server Manager to "Promote this server to a domain controller"]
+7. [select "Add a new forest" and specify root domain name as homelab.local]
+8. [confirm Global Catalog and DNS Server options are checked, and set a DSRM password for directory recovery]
+9. [verify NetBIOS name populates as HOMELAB and leave NTDS/SYSVOL paths at default C:\Windows locations]
+10. [run prerequisite check, click Install, and allow the server to execute its extended reboot to build directory partitions]
+11. [verify successful promotion by confirming the login screen prompts for HOMELAB\Administrator]
+12. [install a separate Windows 11 Pro VM to serve as a domain-joined client for testing]
+13. [set the Windows 11 client's primary DNS to point at the DC's static IP]
+14. [verify connectivity and name resolution from the client before attempting the join by entering: ping <private IP> and nslookup homelab.local]
+15. [join the domain via Settings > Accounts > Access work or school > Connect > "Join this device to a local Active Directory domain," entering homelab.local and authenticating as HOMELAB\Administrator]
+16. [restart the client and confirm the computer object appears under Active Directory Users and Computers > Computers on the DC]
+17. [create a standard domain user account in ADUC and log into the client with domain credentials to confirm end-to-end authentication]
+18. [verify from the client by entering: whoami and gpresult /r, confirming the account's domain identity and Group Policy status]
+
+## Issues Encountered
+-initial prerequisite check for Domain Controller promotion failed due to the local Administrator account having a blank/weak password. Windows elevates this account to Domain Admin during promotion and blocks the process if insecure. resolved by manually setting a strong password via the net user command line tool before rerunning the check.
+-initial deployment wizard attempt mistakenly selected "Add a domain controller to an existing domain" instead of "Add a new forest," which failed since homelab.local didn't exist yet. corrected operation type to create the new root forest.
+
+## Result
+fully functional single-forest Active Directory domain (homelab.local) with a domain controller set up on Windows Server 2025 and a separately installed Windows 11 client successfully joined, authenticated, and verified.
+
+## Notes
+this lab simulates core help desk AD tasks including domain join troubleshooting, DNS dependency verification, and domain account authentication. next phase will build out an OU structure by department and apply Group Policy Objects (GPOs) to demonstrate policy creation, enforcement, and client-side verification
