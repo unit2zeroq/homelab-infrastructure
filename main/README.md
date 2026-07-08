@@ -23,7 +23,7 @@ tasks with scripts and scheduled jobs.
 
 Networking — setting up and managing VLANs, DHCP, and local DNS.
 Monitoring traffic with Wireshark and practicing subnetting and
-basic routing concepts.
+basic routing concepts.a
 
 Security — reviewing system logs, configuring alerts, and exploring intrusion
 detection with tools like Snort and Suricata.
